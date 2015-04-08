@@ -1,8 +1,18 @@
+common_app:
+    resource: "@CommonAppBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+backend_app:
+    resource: "@BackendAppBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 user:
-    resource: "@UserBundle/Controller/"
+    resource: "@BackendUserBundle/Controller/"
     type:     annotation
     prefix:   /
 
 app:
-    resource: "@AppBundle/Controller/"
+    resource: "@FrontendAppBundle/Controller/"
     type:     annotation

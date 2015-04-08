@@ -1,0 +1,11 @@
+parameters:
+    clusterpoint.class: Frontend\AppBundle\Clusterpoint\ClusterpointConnectionFactory
+
+services:
+    clusterpoint:
+        class: %clusterpoint.class%
+        arguments:
+            - %cp_name%
+            - %cp_password%
+            - %cp_address%
+            - %cp_id%

@@ -1,0 +1,7 @@
+parameters:
+
+services:
+    clusterpoint_user_provider:
+        class: Backend\UserBundle\Security\Clusterpoint\UserProvider
+        arguments:
+            - @clusterpoint

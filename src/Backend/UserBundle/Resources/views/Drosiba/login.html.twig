@@ -1,0 +1,21 @@
+{% extends 'BackendAppBundle::assets.html.twig' %}
+
+{% block javascripts %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('bundles/backendapp/css/login.css') }}"/>
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<form action="/drosiba/login_check" method="post" class="form-signin">
+			<h2 class="form-signin-heading">{{ 'Authorize' | trans }}</h2>
+			<label for="username" class="sr-only">{{ 'Username' | trans }}</label>
+			<input type="_username" id="username" class="form-control" placeholder="Username" required="" autofocus="">
+			<label for="password" class="sr-only">{{ 'Password' | trans }}</label>
+			<input type="_password" id="password" class="form-control" placeholder="Password" required="">
+			<button class="btn btn-lg btn-primary btn-block" type="submit">{{ 'Log in' | trans }}</button>
+		</form>
+
+	</div>
+	{% block content %}{% endblock %}
+{% endblock %}
