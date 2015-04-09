@@ -17,6 +17,7 @@ parameters:
         - 'tcp://78.154.146.22:9007'
         - 'tcp://78.154.146.23:9007'
     cp_id: 298
+    cp_database: deino
 
     mailer_transport:  smtp
     mailer_host:       127.0.0.1

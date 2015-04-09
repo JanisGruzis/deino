@@ -1,0 +1,8 @@
+parameters:
+
+services:
+    repository.user:
+        class: Common\UserBundle\Repository\UserRepository
+        arguments:
+            - @clusterpoint
+            - @security.password_encoder

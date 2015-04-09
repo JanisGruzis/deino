@@ -1,5 +1,5 @@
 parameters:
-    clusterpoint.class: Frontend\AppBundle\Clusterpoint\ClusterpointConnectionFactory
+    clusterpoint.class: Frontend\AppBundle\Clusterpoint\ClusterpointConnection
 
 services:
     clusterpoint:
@@ -9,3 +9,4 @@ services:
             - %cp_password%
             - %cp_address%
             - %cp_id%
+            - %cp_database%

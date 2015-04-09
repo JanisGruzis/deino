@@ -2,6 +2,7 @@
 
 namespace Backend\UserBundle\Security\Clusterpoint;
 
+use Common\UserBundle\Repository\UserRepository;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
@@ -9,17 +10,22 @@ use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 
 class UserProvider implements UserProviderInterface
 {
-	protected $clusterpoint;
+	/**
+	 * @var UserRepository
+	 */
+	protected $userRepository;
 
-	public function __construct(\CPS_Connection $clusterpoint)
+	public function __construct(UserRepository $userRepository)
 	{
-		$this->clusterpoint = $clusterpoint;
+		$this->userRepository = $userRepository;
 	}
 
 	public function loadUserByUsername($username)
 	{
-		$query = "<type>user</type><username>$username</username>";
-		$documents = $this->clusterpoint->search($query);
+		$documents = $this->userRepository->get([
+			'type' => UserRepository::TYPE_USER,
+			'username' => $username,
+		]);
 		$userData = reset($documents);
 
         if ($userData) {

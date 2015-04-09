@@ -1,3 +1,8 @@
+common_user:
+    resource: "@CommonUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 common_app:
     resource: "@CommonAppBundle/Controller/"
     type:     annotation

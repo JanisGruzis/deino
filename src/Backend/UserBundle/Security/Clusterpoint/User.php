@@ -11,7 +11,7 @@ class User implements UserInterface, EquatableInterface
 	private $salt;
 	private $roles;
 
-	public function __construct($username, $password, $salt, array $roles)
+	public function __construct($username, $password, $salt, array $roles = [])
 	{
 		$this->username = $username;
 		$this->password = $password;
@@ -24,9 +24,21 @@ class User implements UserInterface, EquatableInterface
 		return $this->roles;
 	}
 
+	public function setRoles(array $roles)
+	{
+		$this->roles = $roles;
+		return $this;
+	}
+
 	public function getPassword()
 	{
 		return $this->password;
+	}
+
+	public function setPassword($password)
+	{
+		$this->password = $password;
+		return $this;
 	}
 
 	public function getSalt()
@@ -34,9 +46,21 @@ class User implements UserInterface, EquatableInterface
 		return $this->salt;
 	}
 
+	public function setSalt($salt)
+	{
+		$this->salt = $salt;
+		return $this;
+	}
+
 	public function getUsername()
 	{
 		return $this->username;
+	}
+
+	public function setUsername($username)
+	{
+		$this->username = $username;
+		return $this;
 	}
 
 	public function eraseCredentials()

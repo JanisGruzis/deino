@@ -7,10 +7,13 @@
 
 {% block body %}
 	<div class="container">
-		<form action="/drosiba/login_check" method="post" class="form-signin">
+		<form action="{{ path('drosiba_login_check') }}" method="post" class="form-signin">
+			{% if error %}
+				<div>{{ error.messageKey|trans(error.messageData) }}</div>
+			{% endif %}
 			<h2 class="form-signin-heading">{{ 'Authorize' | trans }}</h2>
 			<label for="username" class="sr-only">{{ 'Username' | trans }}</label>
-			<input type="_username" id="username" class="form-control" placeholder="Username" required="" autofocus="">
+			<input type="_username" id="username" class="form-control" placeholder="Username" value="{{ lastUsername }}" required="" autofocus="">
 			<label for="password" class="sr-only">{{ 'Password' | trans }}</label>
 			<input type="_password" id="password" class="form-control" placeholder="Password" required="">
 			<button class="btn btn-lg btn-primary btn-block" type="submit">{{ 'Log in' | trans }}</button>
