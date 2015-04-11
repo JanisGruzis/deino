@@ -41,22 +41,52 @@ class ImportClusterpointCommand extends ContainerAwareCommand
 	{
 		return [
 			[
-				'id' => 1,
+				'id' => 'local',
 				'type' => ClusterpointRepository::TYPE_CATEGORY,
-				'name' => 'Sport1',
+				'name' => 'Latvija',
 				'order' => 1,
 			],
 			[
-				'id' => 2,
+				'id' => 'business',
 				'type' => ClusterpointRepository::TYPE_CATEGORY,
-				'name' => 'Politics2',
+				'name' => 'Bizness',
 				'order' => 2,
 			],
 			[
-				'id' => 3,
+				'id' => 'abroad',
 				'type' => ClusterpointRepository::TYPE_CATEGORY,
-				'name' => 'Animals',
+				'name' => 'Ārzemēs',
 				'order' => 3,
+			],
+			[
+				'id' => 'sport',
+				'type' => ClusterpointRepository::TYPE_CATEGORY,
+				'name' => 'Sports',
+				'order' => 4,
+			],
+			[
+				'id' => 'culture',
+				'type' => ClusterpointRepository::TYPE_CATEGORY,
+				'name' => 'Kultūra',
+				'order' => 5,
+			],
+			[
+				'id' => 'car',
+				'type' => ClusterpointRepository::TYPE_CATEGORY,
+				'name' => 'Auto',
+				'order' => 6,
+			],
+			[
+				'id' => 'technology',
+				'type' => ClusterpointRepository::TYPE_CATEGORY,
+				'name' => 'Tehnoloģijas',
+				'order' => 7,
+			],
+			[
+				'id' => 'entertainment',
+				'type' => ClusterpointRepository::TYPE_CATEGORY,
+				'name' => 'Izklaide',
+				'order' => 8,
 			],
 		];
 	}
