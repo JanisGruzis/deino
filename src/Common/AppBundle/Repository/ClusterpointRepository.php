@@ -67,12 +67,60 @@ class ClusterpointRepository {
 
 	/**
 	 * Insert document.
-	 * @param $data
+	 * @param array $document
 	 * @return int
 	 */
-	public function insert($data)
+	public function insert(array $document)
 	{
-		return $this->simple->insertSingle(time() . rand(), $data);
+		$id = isset($document['id']) ? $document['id'] : $this->getUniqueId();
+		return $this->simple->insertSingle($id, $document);
+	}
+
+	/**
+	 * @param array $documents
+	 * @return int
+	 */
+	public function insertMultiple(array $documents)
+	{
+		return $this->simple->insertMultiple($documents);
+	}
+
+	/**
+	 * Replace document.
+	 * @param array $document
+	 * @return int
+	 */
+	public function replace(array $document)
+	{
+		return $this->simple->replaceSingle($document['id'], $document);
+	}
+
+	/**
+	 * @param array $documents
+	 * @return int
+	 */
+	public function replaceMultiple(array $documents)
+	{
+		return $this->simple->replaceMultiple($documents);
+	}
+
+	/**
+	 * If exists, replace else insert.
+	 * @param array $documents
+	 */
+	public function insertOrReplace(array $documents)
+	{
+		foreach ($documents as $document)
+		{
+			$id = isset($document['id']) ? $document['id'] : $this->getUniqueId();
+			$resDocuments = $this->get(['id' => $id, 'type' => $document['type']]);
+			if ($resDocuments)
+			{
+				$this->replace($document);
+			} else {
+				$this->insert($document);
+			}
+		}
 	}
 
 	/**
@@ -100,5 +148,14 @@ class ClusterpointRepository {
 	public function _not($term)
 	{
 		return sprintf('~%s', $term);
+	}
+
+	/**
+	 * Returns unique id.
+	 * @return string
+	 */
+	public function getUniqueId()
+	{
+		return uniqid() . rand();
 	}
 }
