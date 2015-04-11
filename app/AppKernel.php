@@ -23,6 +23,8 @@ class AppKernel extends Kernel
             new Backend\AppBundle\BackendAppBundle(),
             new Common\AppBundle\CommonAppBundle(),
             new Common\UserBundle\CommonUserBundle(),
+            new Common\ArticleBundle\CommonArticleBundle(),
+            new Frontend\ArticleBundle\FrontendArticleBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

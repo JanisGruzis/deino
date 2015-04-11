@@ -26,6 +26,7 @@ class UserProvider implements UserProviderInterface
 			'type' => UserRepository::TYPE_USER,
 			'username' => $username,
 		]);
+		var_dump($documents);
 		$userData = reset($documents);
 
         if ($userData) {

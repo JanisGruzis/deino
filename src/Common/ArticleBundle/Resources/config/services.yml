@@ -1,0 +1,17 @@
+parameters:
+
+services:
+    repository.article:
+        class: Common\ArticleBundle\Repository\ArticleRepository
+        arguments:
+            - @clusterpoint
+
+    repository.category:
+        class: Common\ArticleBundle\Repository\CategoryRepository
+        arguments:
+            - @clusterpoint
+
+    repository.cluster:
+        class: Common\ArticleBundle\Repository\ClusterRepository
+        arguments:
+            - @clusterpoint
