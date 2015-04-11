@@ -13,6 +13,6 @@ class CategoryRepository extends ClusterpointRepository {
 	 */
 	public function getCategories()
 	{
-		return [];
+		return $this->get(['type' => self::TYPE_CATEGORY]);
 	}
 }

@@ -16,7 +16,9 @@ class ArticleController extends BaseController
 	public function articlesOfClustersAction(Request $request)
 	{
 		$articleRepository = $this->get('repository.article');
-		$ids = $request->request->get('clusters');
+		$ids1 = $request->request->get('clusters', []);
+		$ids2 = $request->query->get('clusters', []);
+		$ids = array_merge(is_array($ids1) ? $ids1 : [], is_array($ids2) ? $ids2 : []);
 		$articles = $articleRepository->getArticlesOfClusters($ids);
 
 		return new JsonResponse($articles);

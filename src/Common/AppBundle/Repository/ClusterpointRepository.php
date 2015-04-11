@@ -11,6 +11,8 @@ class ClusterpointRepository {
 
 	const TYPE_USER = 'user';
 	const TYPE_ARTICLE = 'article';
+	const TYPE_CLUSTER = 'cluster';
+	const TYPE_CATEGORY = 'category';
 
 	/**
 	 * @var \CPS_Connection
@@ -71,5 +73,32 @@ class ClusterpointRepository {
 	public function insert($data)
 	{
 		return $this->simple->insertSingle(time() . rand(), $data);
+	}
+
+	/**
+	 * @param array $terms
+	 * @return string
+	 */
+	public function _or(array $terms)
+	{
+		return sprintf('{%s}', implode(' ', $terms));
+	}
+
+	/**
+	 * @param array $terms
+	 * @return string
+	 */
+	public function _and(array $terms)
+	{
+		return sprintf('(%s)', implode(' ', $terms));
+	}
+
+	/**
+	 * @param $term
+	 * @return string
+	 */
+	public function _not($term)
+	{
+		return sprintf('~%s', $term);
 	}
 }
