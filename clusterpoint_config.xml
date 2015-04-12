@@ -1,0 +1,20 @@
+<policy>
+	<rule>
+		<xpath>//document</xpath>
+		<property>document=yes</property>
+		<property>index=xml&amp;text&amp;facet</property>
+		<property>index-numbers=yes</property>
+		<property>exact-match=binary</property>
+		<property>index-empty=yes</property>
+		<property>list=yes</property>
+	</rule>
+	<rule>
+		<xpath>//document/id</xpath>
+		<property>id=yes</property>
+		<property>index=-facet</property>
+	</rule>
+	<rule>
+		<xpath>//document/category_id</xpath>
+		<property>group=yes</property>
+	</rule>
+</policy>

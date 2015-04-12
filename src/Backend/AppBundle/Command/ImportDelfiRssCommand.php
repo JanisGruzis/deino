@@ -29,6 +29,9 @@ class ImportDelfiRssCommand extends ContainerAwareCommand
 		{
 			$articleId = uniqid() . rand();
 			$clusterId = uniqid() . rand();
+			$categoryIndex = array_rand(ImportClusterpointCommand::getCategories());
+			$category = ImportClusterpointCommand::getCategories()[$categoryIndex];
+			$categoryId = $category['id'];
 
 			$article = [
 				'id' => $articleId,
@@ -48,7 +51,7 @@ class ImportDelfiRssCommand extends ContainerAwareCommand
 			$cluster = [
 				'id' => $clusterId,
 				'type' => ClusterpointRepository::TYPE_CLUSTER,
-				'categroy_id' => array_rand(ImportClusterpointCommand::getCategories())['id'],
+				'category_id' => $categoryId,
 				'first_date' => (new \DateTime($xml->pubDate))->format('Y-m-d H:i:s'),
 				'last_date' => (new \DateTime($xml->pubDate))->format('Y-m-d H:i:s'),
 				'size' => 1,

@@ -15,7 +15,7 @@ class ClusterRepository extends ClusterpointRepository {
 	public function getCategoryClusters($clustersPerCategory)
 	{
 		$searchRequest = new \CPS_SearchRequest(['type' => self::TYPE_CLUSTER]);
-		$searchRequest->setGroup('category_id', $clustersPerCategory);
+		$searchRequest->setGroup('category_id', 2);
 		$searchResponse = $this->connection->sendRequest($searchRequest);
 		$documents = $searchResponse->getRawDocuments(DOC_TYPE_ARRAY);
 		$clusters = [];
