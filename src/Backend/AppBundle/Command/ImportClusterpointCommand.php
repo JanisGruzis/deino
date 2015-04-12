@@ -10,16 +10,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class ImportClusterpointCommand extends ContainerAwareCommand
 {
-	/**
-	 * @var InputInterface
-	 */
-	protected $input;
-
-	/**
-	 * @var OutputInterface
-	 */
-	protected $output;
-
 	protected function configure()
 	{
 		$this
@@ -30,14 +20,14 @@ class ImportClusterpointCommand extends ContainerAwareCommand
 
 	protected function execute(InputInterface $input, OutputInterface $output)
 	{
-		$this->import($this->getCategories());
+		$this->import(self::getCategories());
 	}
 
 	/**
 	 * Get categories.
 	 * @return array
 	 */
-	private function getCategories()
+	public static function getCategories()
 	{
 		return [
 			[
