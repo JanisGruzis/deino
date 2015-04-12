@@ -33,6 +33,10 @@ security:
             form_login:
                 login_path: /drosiba/login
                 check_path: /drosiba/login_check
+                default_target_path: /drosiba/login
+            logout:
+                path: /drosiba/logout
+                target: /drosiba/login
 
         # assets
         assets:

@@ -26,16 +26,17 @@ class UserProvider implements UserProviderInterface
 			'type' => UserRepository::TYPE_USER,
 			'username' => $username,
 		]);
-		var_dump($documents);
 		$userData = reset($documents);
 
         if ($userData) {
 			$username = $userData['username'];
 			$password = $userData['password'];
 			$salt = $userData['salt'];
-			$roles = $userData['roles'];
+			$roles = is_array($userData['roles']) ? $userData['roles'] : [];
 
-			return new User($username, $password, $salt, $roles);
+			$user = new User($username, $password, $salt, $roles);
+
+			return $user;
 		}
 
         throw new UsernameNotFoundException(
@@ -45,7 +46,7 @@ class UserProvider implements UserProviderInterface
 
 	public function refreshUser(UserInterface $user)
 	{
-		if (!$user instanceof WebserviceUser) {
+		if (!$user instanceof User) {
 			throw new UnsupportedUserException(
 				sprintf('Instances of "%s" are not supported.', get_class($user))
 			);

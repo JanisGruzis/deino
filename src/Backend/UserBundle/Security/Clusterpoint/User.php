@@ -16,17 +16,17 @@ class User implements UserInterface, EquatableInterface
 		$this->username = $username;
 		$this->password = $password;
 		$this->salt = $salt;
-		$this->roles = $roles;
+		$this->roles = json_encode($roles);
 	}
 
 	public function getRoles()
 	{
-		return $this->roles;
+		return json_decode($this->roles, true);
 	}
 
 	public function setRoles(array $roles)
 	{
-		$this->roles = $roles;
+		$this->roles = json_encode($roles);
 		return $this;
 	}
 

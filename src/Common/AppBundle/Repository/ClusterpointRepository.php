@@ -62,7 +62,7 @@ class ClusterpointRepository {
 	 */
 	public function get(array $data)
 	{
-		return $this->simple->search($data);
+		return $this->simple->search($data, null, null, null, null, DOC_TYPE_ARRAY	);
 	}
 
 	/**

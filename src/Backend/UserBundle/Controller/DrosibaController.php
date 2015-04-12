@@ -35,4 +35,12 @@ class DrosibaController extends Controller
 	{
 		return new Response('');
 	}
+
+	/**
+	 * @Route("/logout", name="drosiba_logout")
+	 */
+	public function logoutAction()
+	{
+		return new Response('');
+	}
 }
