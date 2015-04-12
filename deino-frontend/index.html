@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title>Deino</title>
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css"/>
+    <!--  <link rel="stylesheet" href="bower_components/angular-material/theme/blue-theme.css"/> -->
+    <link rel="stylesheet" href="style.css"/>
+    <!-- <link rel="stylesheet" href="//fonts.googleapis.com/css?family-RobotoDraft:400,500,700,400italic"/> -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic' rel='stylesheet' type='text/css'>
+</head>
+<body ng-app="deinoApp" ng-controller="ListController" layout="column" layout-align="top center">
+
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <span class="md-flex">Deino</span>
+        </div>
+    </md-toolbar>
+
+    <md-content layout="column" layout-align="center center">
+        <div class="app-content">
+<!--
+			<form ng-submit="search()">
+                <div ng-show="!isSearching">
+                    <md-text-float label="Search for" class="long" ng-model="searchTerm"></md-text-float>
+                </div>
+                <md-progress-circular ng-if="isSearching" md-theme="blue" md-mode="indeterminate"></md-progress-circular>
+            </form>
+-->
+            <md-card ng-repeat="cluster in news">
+                <md-card-content>
+					<img src="{{cluster[0].image}}"
+						 alt="" class="md-card-image"/>				
+					<div ng-if="isMobile()">
+						<a href="{{cluster[0].url_mobile}}">
+					</div>
+					<div ng-if="isMobile()">
+						<a href="{{cluster[0].url}}">
+					</div>					
+						<h3>{{cluster[0].title}}</h3>
+					</a>
+					<p>{{cluster[0].description}}
+						<div ng-if="cluster.length > 1">
+							<md-button ng-click="showSubitems(0)">MORE</md-button>
+						</div>
+					</p>
+					<div id="subItems-{{$index}}">
+						<div ng-if="cluster.length > 1">
+							<!-- <a ng-repeat="subItem in [1, (cluster.length - 1)]"> -->
+							<a href="{{getUrl(subItem)}}" ng-repeat="subItem in cluster">
+								<span ng-if="$index!=0">
+									{{subItem.title}}<br>
+								</span>
+							</a>
+						</div>
+					</div>
+				</md-card-content>
+				 <!--
+				 <md-card-footer>
+				   Card footer
+				 </md-card-footer>
+				 -->
+            </md-card>
+        </div>
+    </md-content>
+	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>	
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/hammerjs/hammer.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
