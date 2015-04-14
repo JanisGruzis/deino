@@ -2,7 +2,7 @@ frontend_article:
     resource: "@FrontendArticleBundle/Controller/"
     type:     annotation
     prefix:   /
-    
+
 backend_user:
     resource: "@BackendUserBundle/Controller/"
     type:     annotation
