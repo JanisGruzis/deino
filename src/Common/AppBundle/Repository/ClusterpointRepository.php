@@ -154,18 +154,27 @@ class ClusterpointRepository {
 	 * @param $term
 	 * @return string
 	 */
-	public function _lt($term)
+	public function _le($term)
 	{
-		return sprintf('<= %s', $term);
+		return sprintf('<=%s', $term);
 	}
 
 	/**
 	 * @param $term
 	 * @return string
 	 */
-	public function _gt($term)
+	public function _ge($term)
 	{
-		return sprintf('>= %s', $term);
+		return sprintf('>=%s', $term);
+	}
+
+	/**
+	 * @param $term
+	 * @return string
+	 */
+	public function _eq($term)
+	{
+		return sprintf('=%s', $term);
 	}
 
 	/**

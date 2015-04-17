@@ -14,27 +14,29 @@ class ArticleRepository extends ClusterpointRepository {
 	 */
 	public function getArticles(array $data = [])
 	{
+		$xmlQuery = '';
 		$query = [ 'type' => self::TYPE_ARTICLE ];
 
-		if (isset($data['to']))
+		if (isset($data['from']))
 		{
-			$time = strtotime($data['to']);
-			$query['date'] = $this->_lt(date('Y/m/d H:i:s', $time));
+			$time = strtotime($data['from']);
+			$query['date'] = $this->_ge(date('Y/m/d H:i:s', $time));
 		}
 
-		if (isset($data['sources']) and is_array($data['sources']))
+		if (isset($data['sources']) and is_array($data['sources']) and $data['sources'])
 		{
 			$query['source'] = $this->_or($data['sources']);
 		}
 
-		if (isset($data['query']) and is_array($data['query']))
+		if (isset($data['query']))
 		{
-			$q = $this->_stemming($data['sources']);
-			$query['description'] = $this->_like($q);
+			$q = $this->_stemming($data['query']);
+			$xmlQuery = '{<description>'.$q.'</description><title>'.$q.'</title>}';
 		}
 
+		$fullQuery = CPS_QueryArray($query) . $xmlQuery;
 		$searchRequest = new \CPS_SearchRequest(
-			$query,
+			$fullQuery,
 			(isset($data['offset']) ? $data['offset'] : null),
 			(isset($data['limit']) ? $data['limit'] : 1000000)
 		);
