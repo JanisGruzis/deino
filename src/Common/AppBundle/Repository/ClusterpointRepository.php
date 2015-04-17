@@ -62,7 +62,7 @@ class ClusterpointRepository {
 	 */
 	public function get(array $data)
 	{
-		return $this->simple->search($data, null, null, null, null, DOC_TYPE_ARRAY	);
+		return $this->simple->search($data, null, 1000000, null, null, DOC_TYPE_ARRAY	);
 	}
 
 	/**
@@ -148,6 +148,42 @@ class ClusterpointRepository {
 	public function _not($term)
 	{
 		return sprintf('~%s', $term);
+	}
+
+	/**
+	 * @param $term
+	 * @return string
+	 */
+	public function _lt($term)
+	{
+		return sprintf('<= %s', $term);
+	}
+
+	/**
+	 * @param $term
+	 * @return string
+	 */
+	public function _gt($term)
+	{
+		return sprintf('>= %s', $term);
+	}
+
+	/**
+	 * @param $term
+	 * @return string
+	 */
+	public function _stemming($term)
+	{
+		return sprintf('$$lv %s$', $term);
+	}
+
+	/**
+	 * @param $term
+	 * @return string
+	 */
+	public function _like($term)
+	{
+		return sprintf('*%s*', $term);
 	}
 
 	/**

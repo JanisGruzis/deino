@@ -9,27 +9,33 @@ class ClusterRepository extends ClusterpointRepository {
 
 	/**
 	 * Get category clusters.
-	 * @param $limit
+	 * @param $data
 	 * @return mixed
 	 */
-	public function getCategoryClusters($limit)
+	public function getClusters(array $data = [], $groupBy = null, $groupLimit = null)
 	{
-		$searchRequest = new \CPS_SearchRequest(['type' => self::TYPE_CLUSTER]);
-		$searchRequest->setGroup('category_id', $limit);
-		$searchResponse = $this->connection->sendRequest($searchRequest);
-		$documents = $searchResponse->getRawDocuments(DOC_TYPE_ARRAY);
-		$clusters = [];
+		$query = [
+			'type' => self::TYPE_CLUSTER,
+		];
 
-		foreach ($documents as $document)
+		if (isset($data['categories']) and is_array($data['categories']))
 		{
-			$categoryId = isset($document['category_id']) ? $document['category_id'] : null;
-			if (!isset($clusters[$categoryId]))
-			{
-				$clusters[$categoryId] = [];
-			}
-
-			$clusters[$categoryId][] = $document;
+			$query['category_id'] = $this->_or($data['categories']);
 		}
+
+		$searchRequest = new \CPS_SearchRequest(
+			$query,
+			(isset($data['offset']) ? $data['offset'] : null),
+			(isset($data['limit']) ? $data['limit'] : 1000000)
+		);
+
+		if ($groupBy)
+		{
+			$searchRequest->setGroup($groupBy, $groupLimit);
+		}
+
+		$searchResponse = $this->connection->sendRequest($searchRequest);
+		$clusters = $searchResponse->getRawDocuments(DOC_TYPE_ARRAY);
 
 		return $clusters;
 	}
