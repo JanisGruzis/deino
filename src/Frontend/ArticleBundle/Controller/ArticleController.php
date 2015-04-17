@@ -12,6 +12,17 @@ use Symfony\Component\HttpFoundation\Request;
 class ArticleController extends BaseController
 {
 	/**
+	 * @Route("/api/categories", name="api_categories")
+	 */
+	public function categoriesAction()
+	{
+		$categroyRepository = $this->get('repository.category');
+		$categories = $categroyRepository->getCategories();
+
+		return new JsonResponse($categories);
+	}
+
+	/**
 	 * @Route("/api/articles_by_category", name="api_articles_by_category")
 	 */
 	public function articlesByCategoryAction(Request $request)
