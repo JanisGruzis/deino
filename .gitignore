@@ -7,4 +7,5 @@
 /web/bundles
 /app/phpunit.xml
 /web/images/*
+/web/media
 !.gitkeep
