@@ -6,4 +6,5 @@
 /.idea
 /web/bundles
 /app/phpunit.xml
+/web/images/*
 !.gitkeep
