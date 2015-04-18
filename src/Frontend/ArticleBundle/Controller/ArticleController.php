@@ -28,7 +28,7 @@ class ArticleController extends BaseController
 	public function sourcesAction()
 	{
 		$sourceRepository = $this->get('repository.source');
-		$sources = $sourceRepository->getCategories();
+		$sources = $sourceRepository->getSources();
 
 		return new JsonResponse($sources);
 	}
