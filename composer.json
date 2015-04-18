@@ -21,7 +21,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "clusterpoint/php-client-api": "~3.0",
         "symfony/serializer": "~2.6",
-        "nelmio/cors-bundle": "~1.4"
+        "nelmio/cors-bundle": "~1.4",
+        "liip/imagine-bundle": "~1.2"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

@@ -53,7 +53,7 @@ class ArticleController extends BaseController
 	}
 
 	/**
-	 * @Route("/api/x", name="api_category_clusters")
+	 * @Route("/api/category_clusters", name="api_category_clusters")
 	 */
 	public function categoryClustersAction(Request $request)
 	{

@@ -14,7 +14,27 @@
 		<property>index=-facet</property>
 	</rule>
 	<rule>
+		<xpath>//document/date</xpath>
+		<property>index-dates=yes</property>
+	</rule>
+	<rule>
+		<xpath>//document/tokens</xpath>
+		<property>index=xml</property>
+	</rule>
+	<rule>
+		<xpath>//document/tokens/token</xpath>
+		<property>index=xml</property>
+	</rule>
+	<rule>
 		<xpath>//document/category_id</xpath>
 		<property>group=yes</property>
+	</rule>
+	<rule>
+		<xpath>//document/first_date</xpath>
+		<property>index-dates=yes</property>
+	</rule>
+	<rule>
+		<xpath>//document/last_date</xpath>
+		<property>index-dates=yes</property>
 	</rule>
 </policy>
