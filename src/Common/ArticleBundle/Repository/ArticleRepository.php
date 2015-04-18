@@ -17,10 +17,14 @@ class ArticleRepository extends ClusterpointRepository {
 		$xmlQuery = '';
 		$query = [ 'type' => self::TYPE_ARTICLE ];
 
-		if (isset($data['from']))
+		if (isset($data['period']))
 		{
-			$time = strtotime($data['from']);
-			$query['date'] = $this->_ge(date('Y/m/d H:i:s', $time));
+			$period = $data['period'];
+			if (in_array($period, ['day', 'week', 'month']))
+			{
+				$time = strtotime('-1 ' . $period);
+				$query['date'] = $this->_ge(date('Y/m/d H:i:s', $time));
+			}
 		}
 
 		if (isset($data['sources']) and is_array($data['sources']) and $data['sources'])
