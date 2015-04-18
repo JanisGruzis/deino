@@ -13,6 +13,17 @@ class CategoryRepository extends ClusterpointRepository {
 	 */
 	public function getCategories()
 	{
-		return $this->get(['type' => self::TYPE_CATEGORY]);
+		$searchRequest = new \CPS_SearchRequest(
+			[ 'type' => self::TYPE_CATEGORY ], null, 1000000
+		);
+
+		$searchRequest->setOrdering([
+			CPS_StringOrdering('name', 'lv')
+		]);
+
+		$searchResponse = $this->connection->sendRequest($searchRequest);
+		$categories = $searchResponse->getRawDocuments(DOC_TYPE_ARRAY);
+
+		return $categories;
 	}
 }

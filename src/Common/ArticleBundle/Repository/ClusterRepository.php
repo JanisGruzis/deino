@@ -29,6 +29,12 @@ class ClusterRepository extends ClusterpointRepository {
 			(isset($data['limit']) ? $data['limit'] : 1000000)
 		);
 
+		$searchRequest->setOrdering([
+			CPS_DateOrdering('first_date'),
+			CPS_DateOrdering('last_date'),
+			CPS_RelevanceOrdering('desc')
+		]);
+
 		if ($groupBy)
 		{
 			$searchRequest->setGroup($groupBy, $groupLimit);
