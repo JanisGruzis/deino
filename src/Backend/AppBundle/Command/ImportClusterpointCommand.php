@@ -21,6 +21,42 @@ class ImportClusterpointCommand extends ContainerAwareCommand
 	protected function execute(InputInterface $input, OutputInterface $output)
 	{
 		$this->import(self::getCategories());
+		$this->import(self::getSources());
+	}
+
+	/**
+	 * Get sources.
+	 * @return array
+	 */
+	public static function getSources()
+	{
+		return [
+			[
+				'id' => 'Diena',
+				'type' => ClusterpointRepository::TYPE_SOURCE,
+				'name' => 'Diena',
+			],
+			[
+				'id' => 'LSM',
+				'type' => ClusterpointRepository::TYPE_SOURCE,
+				'name' => 'LSM',
+			],
+			[
+				'id' => 'Apollo',
+				'type' => ClusterpointRepository::TYPE_SOURCE,
+				'name' => 'Apollo',
+			],
+			[
+				'id' => 'Delfi',
+				'type' => ClusterpointRepository::TYPE_SOURCE,
+				'name' => 'Delfi',
+			],
+			[
+				'id' => 'TVNET',
+				'type' => ClusterpointRepository::TYPE_SOURCE,
+				'name' => 'TVNET',
+			],
+		];
 	}
 
 	/**

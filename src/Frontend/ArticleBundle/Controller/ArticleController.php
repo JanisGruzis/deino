@@ -23,6 +23,17 @@ class ArticleController extends BaseController
 	}
 
 	/**
+	 * @Route("/api/sources", name="api_sources")
+	 */
+	public function sourcesAction()
+	{
+		$sourceRepository = $this->get('repository.source');
+		$sources = $sourceRepository->getCategories();
+
+		return new JsonResponse($sources);
+	}
+
+	/**
 	 * @Route("/api/articles_by_category", name="api_articles_by_category")
 	 */
 	public function articlesByCategoryAction(Request $request)

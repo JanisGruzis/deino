@@ -15,3 +15,8 @@ services:
         class: Common\ArticleBundle\Repository\ClusterRepository
         arguments:
             - @clusterpoint
+
+    repository.source:
+        class: Common\ArticleBundle\Repository\SourceRepository
+        arguments:
+            - @clusterpoint
