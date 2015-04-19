@@ -70,8 +70,8 @@ class ArticleRepository extends ClusterpointRepository {
 		);
 
 		$searchRequest->setOrdering([
-			CPS_RelevanceOrdering('desc'),
-			CPS_DateOrdering('date', 'desc'),
+			CPS_RelevanceOrdering('descending'),
+			CPS_DateOrdering('date', 'descending'),
 		]);
 
 		$searchResponse = $this->connection->sendRequest($searchRequest);

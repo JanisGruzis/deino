@@ -30,9 +30,9 @@ class ClusterRepository extends ClusterpointRepository {
 		);
 
 		$searchRequest->setOrdering([
-			CPS_DateOrdering('first_date'),
-			CPS_DateOrdering('last_date'),
-			CPS_RelevanceOrdering('desc')
+			CPS_DateOrdering('first_date', 'descending'),
+			CPS_DateOrdering('last_date', 'descending'),
+			CPS_RelevanceOrdering('descending')
 		]);
 
 		if ($groupBy)
