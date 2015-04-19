@@ -77,20 +77,16 @@ class ArticleController extends BaseController
 			return $item['id'];
 		}, $clusters);
 
-		$query['clusters'] = $clusterIds;
-		$articles = $articleRepository->getArticlesOfClusters($query);
+		$articles = $articleRepository->getArticlesOfClusters([
+			'clusters' => $clusterIds
+		]);
 		$articleMap = $this->mapArticles($articles);
 
-		$response = [];
 		foreach ($clusters as $key => $cluster) {
-			if (isset($articleMap[$cluster['id']]))
-			{
-				$cluster['articles'] = $articleMap[$cluster['id']];
-				$response[] = $cluster;
-			}
+			$clusters[$key]['articles'] = (isset($articleMap[$cluster['id']]) ? $articleMap[$cluster['id']] : []);
 		}
 
-		return new JsonResponse($response);
+		return new JsonResponse($clusters);
 	}
 
 	/**

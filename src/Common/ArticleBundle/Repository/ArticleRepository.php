@@ -63,11 +63,6 @@ class ArticleRepository extends ClusterpointRepository {
 			'cluster_id' => $this->_or((isset($data['clusters']) ? $data['clusters'] : [])),
 		];
 
-		if (isset($data['sources']) and is_array($data['sources']) and $data['sources'])
-		{
-			$query['source'] = $this->_or($data['sources']);
-		}
-
 		$searchRequest = new \CPS_SearchRequest(
 			$query,
 			(isset($data['offset']) ? $data['offset'] : null),
