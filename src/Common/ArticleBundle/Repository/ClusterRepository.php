@@ -23,6 +23,11 @@ class ClusterRepository extends ClusterpointRepository {
 			$query['category_id'] = $this->_or($data['categories']);
 		}
 
+		if (isset($data['sources']) and is_array($data['sources']))
+		{
+			$query['source'] = $this->_or($data['sources']);
+		}
+
 		$searchRequest = new \CPS_SearchRequest(
 			$query,
 			(isset($data['offset']) ? $data['offset'] : null),
