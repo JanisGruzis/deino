@@ -15,7 +15,6 @@ class MediaController extends BaseController
 {
 	/**
 	 * @Route("/api/image", name="api_image")
-	 * @Cache(expires="tomorrow")
 	 */
 	public function imageAction(Request $request)
 	{
