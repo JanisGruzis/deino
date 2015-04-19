@@ -77,7 +77,7 @@ class ArticleController extends BaseController
 			return $item['id'];
 		}, $clusters);
 
-		$articles = $articleRepository->getArticlesOfClusters($clusterIds);
+		$articles = $articleRepository->getArticlesOfClusters($clusterIds, $query);
 		$articleMap = $this->mapArticles($articles);
 
 		foreach ($clusters as $key => $cluster) {
