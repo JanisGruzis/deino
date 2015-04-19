@@ -32,6 +32,11 @@ class ArticleRepository extends ClusterpointRepository {
 			$query['source'] = $this->_or($data['sources']);
 		}
 
+		if (isset($data['categories']) and is_array($data['categories']))
+		{
+			$query['category_id'] = $this->_or($data['categories']);
+		}
+
 		if (isset($data['query']))
 		{
 			$q = $this->_stemming($data['query']);
