@@ -90,7 +90,7 @@ class ArticleController extends BaseController
 			}
 		}
 
-		return new JsonResponse($clusters);
+		return new JsonResponse($response);
 	}
 
 	/**
