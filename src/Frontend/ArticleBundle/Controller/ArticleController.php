@@ -34,6 +34,16 @@ class ArticleController extends BaseController
 	}
 
 	/**
+	 * @Route("/api/popular/{period}", name="api_popular")
+	 */
+	public function sourcesAction($period)
+	{
+		$test = [$period];
+
+		return new JsonResponse($test);
+	}
+
+	/**
 	 * @Route("/api/articles_by_category", name="api_articles_by_category")
 	 */
 	public function articlesByCategoryAction(Request $request)
