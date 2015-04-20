@@ -41,7 +41,7 @@ class ArticleController extends BaseController
         $articleRepository = $this->get('repository.article');
         $clusterRepository = $this->get('repository.cluster');
 
-        $clusters = $clusterRepository->getClusters([], 'size', 3);
+        $clusters = $clusterRepository->getClustersBySize();
         $clusterIds = array_map(function($item){
             return $item['id'];
         }, $clusters);
