@@ -14,6 +14,8 @@ class ClusterpointRepository {
 	const TYPE_CLUSTER = 'cluster';
 	const TYPE_CATEGORY = 'category';
 	const TYPE_SOURCE = 'source';
+	const ASC = 'ascending';
+	const DESC = 'descending';
 
 	/**
 	 * @var \CPS_Connection
