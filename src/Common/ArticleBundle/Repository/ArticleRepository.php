@@ -49,6 +49,9 @@ class ArticleRepository extends ClusterpointRepository {
 			(isset($data['offset']) ? $data['offset'] : null),
 			(isset($data['limit']) ? $data['limit'] : 1000000)
 		);
+		$searchRequest->setList([
+			'text'=>'highlight'
+		]);
 		$searchRequest->setOrdering([CPS_RelevanceOrdering('desc'), CPS_DateOrdering('date', 'desc')]);
 		$searchResponse = $this->connection->sendRequest($searchRequest);
 		$articles = $searchResponse->getRawDocuments(DOC_TYPE_ARRAY);

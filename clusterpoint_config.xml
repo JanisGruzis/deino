@@ -37,4 +37,14 @@
 		<xpath>//document/last_date</xpath>
 		<property>index-dates=yes</property>
 	</rule>
+	<rule>
+		<xpath>//document/description</xpath>
+		<property>list=highlight</property>
+		<property>stem-lang=lv</property>
+	</rule>
+	<rule>
+		<xpath>//document/title</xpath>
+		<property>list=highlight</property>
+		<property>stem-lang=lv</property>
+	</rule>
 </policy>
