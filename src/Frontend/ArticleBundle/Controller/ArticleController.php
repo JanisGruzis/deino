@@ -34,13 +34,32 @@ class ArticleController extends BaseController
     }
 
     /**
-     * @Route("/api/popular/{period}", name="api_popular")
+     * @Route("/api/popular", name="api_popular")
      */
-    public function popularArticles($period)
+    public function popularArticles(Request $request)
     {
-        $test = [$period];
+        $articleRepository = $this->get('repository.article');
+        $clusterRepository = $this->get('repository.cluster');
 
-        return new JsonResponse($test);
+        $clusters = $clusterRepository->getClusters([], 'size', 3);
+        $clusterIds = array_map(function($item){
+            return $item['id'];
+        }, $clusters);
+
+        $articles = $articleRepository->getArticlesOfClusters($clusterIds);
+        $articleMap = $this->mapArticles($articles);
+
+        $result = [];
+        foreach ($clusters as $cluster)
+        {
+            $cluster['articles'] = (isset($articleMap[$cluster['id']]) ? $articleMap[$cluster['id']] : []);
+            if (!isset($result[$cluster['category_id']]))
+            {
+                $result[$cluster['category_id']] = [];
+            }
+            $result[$cluster['category_id']][] = $cluster;
+        }
+        return new JsonResponse($result);
     }
 
     /**
