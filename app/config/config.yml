@@ -82,5 +82,4 @@ liip_imagine:
         mobile_image:
             quality: 87
             filters:
-#                relative_resize: { widen: 640 }
-                thumbnail: { size: [640, 394], mode: outbound }
+                thumbnail: { size: [506, 284], mode: outbound }
